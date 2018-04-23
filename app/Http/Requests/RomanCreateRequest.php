@@ -22,7 +22,7 @@ class RomanCreateRequest extends Request
     public function rules()
     {
         return [
-            'number' => 'required|integer|min:1|max:3999',
+            'number' => 'required|integer|min:1|max:3999|unique:romans',
         ];
     }
 }

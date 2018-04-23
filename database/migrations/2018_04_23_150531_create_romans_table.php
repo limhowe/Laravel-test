@@ -16,7 +16,7 @@ class CreateRomansTable extends Migration
         Schema::create('romans', function (Blueprint $table) {
             $table->increments('id');
             $table->string('roman_number');
-            $table->integer('number');
+            $table->integer('number')->unique();
             $table->timestamp('created_at')->nullable();
         });
     }
