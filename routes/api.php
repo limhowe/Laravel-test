@@ -16,3 +16,11 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+
+/**
+ * Route for Roman API
+ */
+Route::post('/romans', 'RomanController@store');
+Route::get('/romans', 'RomanController@index');
+Route::get('/romans/top', 'RomanController@top');

@@ -157,11 +157,13 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\ConversionServiceProvider::class,
 
         /*
          * fractal Provider.
          */
         Spatie\Fractal\FractalServiceProvider::class,
+
     ],
 
     /*

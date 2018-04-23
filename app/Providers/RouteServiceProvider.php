@@ -15,6 +15,13 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     protected $namespace = 'App\Http\Controllers';
+    
+     /**
+     * This namespace is applied to your API controller routes.
+     *
+     * @var string
+     */
+    protected $apiNamespace = 'App\Http\Controllers\API';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -67,7 +74,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::group([
             'middleware' => 'api',
-            'namespace' => $this->namespace,
+            'namespace' => $this->apiNamespace,
             'prefix' => 'api',
         ], function ($router) {
             require base_path('routes/api.php');
