@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Roman;
 use App\RomanTransformer;
 use App\IntegerConversionInterface;
+use App\Http\Requests\RomanCreateRequest;
 
 class RomanController extends Controller
 {
@@ -21,13 +22,10 @@ class RomanController extends Controller
     /**
      * Store Roman Number
      * 
+     * @return jsonResponse
      */
-    public function store(Request $request)
+    public function store(RomanCreateRequest $request)
     {
-        $this->validate($request, [
-            'number' => 'required|integer|min:1|max:3999',
-        ]);
-
         $inputNumber = $request->input('number');
 
         //Convert Arabic Roman Number
@@ -39,6 +37,7 @@ class RomanController extends Controller
         $roman->number = $inputNumber;
         $roman->save();
 
+        //Use Fractal to transform Model To View Data Format
         $romans = fractal($roman, new RomanTransformer())->toArray();
         return response()->json($romans);
     }
