@@ -44,6 +44,24 @@ class RomanController extends Controller
 
     public function index()
     {
-        
+        //Get All Romans
+        $romans = Roman::orderBy('created_at', 'desc')
+                ->get();
+
+        //Use Fractal to transform Model To View Data Format
+        $romans = fractal($romans, new RomanTransformer())->toArray();
+        return response()->json($romans);
+    }
+
+    public function top10()
+    {
+        //Get Top 10 Romans
+        $romans = Roman::orderBy('number', 'desc')
+                ->take(10)
+                ->get();
+
+        //Use Fractal to transform Model To View Data Format
+        $romans = fractal($romans, new RomanTransformer())->toArray();
+        return response()->json($romans);
     }
 }

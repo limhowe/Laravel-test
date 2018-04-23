@@ -23,4 +23,4 @@ Route::get('/user', function (Request $request) {
  */
 Route::post('/romans', 'RomanController@store');
 Route::get('/romans', 'RomanController@index');
-Route::get('/romans/top', 'RomanController@top');
+Route::get('/romans/top', 'RomanController@top10');
